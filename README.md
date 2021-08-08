@@ -5,9 +5,14 @@ This repository was originally intended to be an add-on for the Webcontrol Maslo
 Future iterations could possibly be made to work with Makerverse by communicating over the socket interface.
 
 ![image](https://user-images.githubusercontent.com/59507087/128634738-d5fb397f-8abb-44bf-8281-a42a958d6d4b.png)
+3D slicer view of the back for PETG printing.
+
 
 ![image](https://user-images.githubusercontent.com/59507087/128634862-5538da0e-5301-454e-ac98-0f399f6ea7d1.png)
+Front of the control illustrating the display and LED locations.
 
 ![image](https://user-images.githubusercontent.com/59507087/128634882-3c455e8b-86ce-4bd0-a98b-17092dd85f70.png)
+3D printed case and back side of control.
 
 ![image](https://user-images.githubusercontent.com/59507087/128634894-38ae4870-d02d-40ae-9aee-30848b29efa5.png)
+battery pack and disassembled control.
