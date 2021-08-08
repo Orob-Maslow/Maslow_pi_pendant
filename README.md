@@ -12,7 +12,7 @@ Future iterations could possibly be made to work with Makerverse by communicatin
 Front of the control illustrating the display and LED locations.
 
 ![image](https://user-images.githubusercontent.com/59507087/128634882-3c455e8b-86ce-4bd0-a98b-17092dd85f70.png)
-3D printed case and back side of control.
+Back side of control with some view of the wires and the connection locations.  Original nes wires were used for button input.
 
 ![image](https://user-images.githubusercontent.com/59507087/128634894-38ae4870-d02d-40ae-9aee-30848b29efa5.png)
 battery pack and disassembled control.
