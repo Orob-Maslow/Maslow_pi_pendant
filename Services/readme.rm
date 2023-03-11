@@ -1,12 +1,8 @@
 To set up buttons:
 
-mkdir ~/.Control
-mkdir ~/.Control/systemd
+mkdir ~/.local/share/systemd/user/
 
-cp ~/WebControl/MaslowButton.service ~/.Control/systemd
-
-mkdir ~/.WebControl/systemd
-cp MaslowButton.py ~/.WebControl/systemd
+cp ~/WebControl/*.service ~/.local/share/systemd/user/
 
 that is all for the button and LED service.
 

@@ -1,10 +1,19 @@
 #!/usr/bin/python
 import requests
-import cwiid
 import time
 '''
- TODO add functionality to change port number if changed in webcontrol...  startup arguement?
+ TODO
+  1- add functionality to change port number if changed in webcontrol...  startup arguement?
  add it as a startup arguement... call it with IP address and port from command line
+  2- add webcontrol.json setting to enable use of external input (such as pendant, led, status, etc)
+  3- add webcontrol.json setting to enable local service + #5
+  4- add webcontrol.json file picker for file location of service file so users can make their own setup
+    - have WC then "make" the service work, by making the folder if not there
+    - moving the file to the .local/share/systemctl/<username>/ folder
+    - enabling the service 
+    - starting the service
+  5- add webcontrol.json file picker for actual pendant executable file so it can "make" the service file.
+  6- action menu to stop, reset or change the service options
 '''
 class Pendant():
  '''
@@ -12,46 +21,56 @@ class Pendant():
     Buttons:
       Shutdown
       Select
-      Play
+      Play / Run
       Pause
-      Run
+      STOP
       Up
       Left
       Right
       Down
       
     Menu items
-      Select (_ + Select)
+      Select (STOP for 3 seconds) to activate menu, then red UP-DOWN buttons to move through options
+        LED set to indicate menu change option
+        put text on z display for xy mode
+        put text on x for z mode
+        put text on z for home mode
+        put clock on X for clock mode and flash it
+        PressSelect to select that mode
+        Play mode can always be entered from play if machine not moving
       XY
-        home (STOP + Select) when not moving
-        increment change (Pause + Select) - 1,2,5,10,20,50,100,300
-        stop
+        Go home Save (SELECT + UP) when not moving
+        Save home position (SELECT + PAUSE) when not moving
+        Reset home to center (SELECT + DOWN) when not moving
+        increment change (SELECT + LEFT OR RIGHT) - 1,2,5,10,20,50,100,300 , show on z display
+        STOP will stop movement
+        STOP for 3 seconds will put back in menu
       Z
-        zero (STOP + Select) When not moving
-        increment change (Pause + Select) - 0.5, 1, 2, 5, 10
-        stop
-      Home
-        Go home
-          stop
-        Reset Home
-        Reset to center
-      Clock
-        Clock
-        Date
-        Timer
+        zero (SELECT + PAUSE) When not moving
+        increment change (SELECT + UP or DOWN) - 0.5, 1, 2, 5, 10 show on Y display
+        STOP will stop movement
+        STOP for 3 seconds will put back in menu
+      Clock / Timer
+        Clock on X, Date on Y
+        Timer on z.  start is UP, stop is DOWN, reset is RIGHT
       Play
-        pause
-        stop
-        Show elapsed time / line number
-        Show XY
-
-      The menu will scroll through X-Y, Z.  
-    to set home or zero it will be stop + select for both... stop first and then select     
+        default view is elapsed time on X
+        gcode line number on Y
+        SELECTt button will toggle 
+          toggle to X position and Y position display for a few seconds
+          toggle date/time for a few seconds 
+        pause/resume
+          show pause message on z line
+          elapsed pause time on x (different counter)
+          revert elapsed time back to original cut time minus pause time
+        stop - works with simple press to stop all movment
+     
  '''
 
  def __init__(self):
     '''
     init sets up the object properties that are used with the various functions below
+    Setup gpio for buttons
     A, trigger, ztrigger, confirm, home, a, b, all help with making the buttons single press
     wm is the wiimote object
     wiiPendantConnect is the flag that lets the class know to try and reconnect

@@ -4,8 +4,12 @@
 
 import requests
 
-def Get(address,command):  #TODO: add port # as part of the call
+def Get(port, address, command):  
     try:
+        #TODO: add port # as part of the call
+        #URL = "http://localhost:" + str(port) + str(address)
+        #
+        
         URL = "http://localhost:5000/" + str(address)
         #print (URL)
         r = requests.get(URL,params = command)
